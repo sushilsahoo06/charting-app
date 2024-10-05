@@ -4,14 +4,14 @@ const mongoose=require('mongoose');
 const path=require('path');
 const chart=require("./models/chart.js")//
 mongoose.set('debug', true);
-const methodOverride = require('method-override');
+const methodOverride = require('method-override');//delete 
 //const Chart = require(path.join(__dirname, 'models', 'chart.js'));
 
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static("public"));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));//post requiest
 app.use(methodOverride('_method'));
 
 app.listen(8080,()=>{
@@ -19,7 +19,7 @@ app.listen(8080,()=>{
 });
 
 main().then((res)=>{
-    console.log("connectiocdns succesfull !!");
+    console.log("connections succesfull !!");
 }).catch((err)=>{
     console.log(err);
 });
