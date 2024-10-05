@@ -1,0 +1,20 @@
+.charts{
+    background-color: aliceblue;
+    padding: 25px 20px 25px 25px;
+    border-radius: 10px;
+   
+}
+.msg{
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 15px;
+}
+body{
+    padding-left: 20px;
+}
+#btn{
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 4px 15px 4px 15px;
+}

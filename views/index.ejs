@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h3>List of all datas</h1>
+        <form method="get" action="/chat/new">
+            <button id="btn">New chat</button>
+        </form>
+        <br><hr>
+    <% for(let chat of charts){ %>   
+        <div class="charts">
+            <p>From :<%= chat.from %></p>
+            <div class="msg">
+                <p><%= chat.msg %></p>
+                <span>
+                    <form method="get" action="/chat/<%= chat._id %>/edit">
+                        <button id="btn">Edit</button>
+                    </form>
+                    <br>
+                    <form method="post" action="/chat/<%= chat._id %>?_method=DELETE">
+                        <button id="btn">delete</button>
+                    </form>
+                </span>
+                
+            </div>
+            <p>Recived by :<%= chat.to %></p>
+            <hr>
+            <p><%= chat.created_at.toString().split(" ") %></p>
+        </div>
+    <% } %>
+         
+</body>
+</html>
+
+
+
