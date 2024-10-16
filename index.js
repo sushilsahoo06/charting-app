@@ -84,6 +84,11 @@ app.patch("/chat/:id",asyncWrap(async(req,res)=>{
 //delete route
 app.delete("/chat/:id",asyncWrap(async(req,res,next)=>{
         let{id}=req.params;
+           // Check if the provided ID is a valid ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+        // Return a 400 Bad Request error for invalid ObjectId
+        return next(new expressError(400, "Invalid chat ID!"));
+        }
         let deletechat=await chart.findByIdAndDelete(id);
         console.log(deletechat);
         res.redirect("/chat");
@@ -108,25 +113,25 @@ app.get("/chat/:id",asyncWrap(async(req,res,next)=>{
 app.get("/",(req,res)=>{
     res.send("server is working !!");
 });
-
+//validation error middlewire
 const handlevalidationError=(err)=>{
+    console.dir(err);
     console.log("this was a validation error !");
-    console.dir(err)
     return err;
 };
 app.use((err,req,res,next)=>{
     console.log(err.name);
-    if(err.name ==="validationError"){
+    if(err.name ==="ValidationError"){
        err= handlevalidationError(err)
     }
     next(err);
 });
-// erroe handling middlewire
+// Custom Error-Handling Middleware
 app.use((err,req,res,next)=>{
     let{status=500, message="some error occured !"}=err
-    res.status(status).send(message)
+    res.status(status).render("error.ejs",{status,message});
 });
 
 app.use((req, res) => {
-    res.status(404).send("page not found!!"); // Render custom 404 page
+    res.status(404).render("404.ejs"); // Render custom 404 page
 });
