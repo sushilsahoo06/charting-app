@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show data</title>
+</head>
+<body>
+  <h3>Show your chart</h3>
+  <p>sent from <%= chat.from %> to <%= chat.to %></p>
+  <p><%= chat.msg %></p>
+  <p><%= new Date(chat.created_at).toString().split()%></p>
+</body>
+</html>

@@ -8,7 +8,7 @@ main().then((res)=>{
     console.log(err);
 });
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/whatShap',{
+    await mongoose.connect('mongodb://127.0.0.1:27017/fakewhatShap',{
         useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 30000, // 30 seconds

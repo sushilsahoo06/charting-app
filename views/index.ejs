@@ -25,12 +25,15 @@
                     <form method="post" action="/chat/<%= chat._id %>?_method=DELETE">
                         <button id="btn">delete</button>
                     </form>
+                    <form action="/chat/<%= chat._id %>">
+                        <button>show</button>
+                    </form>
                 </span>
                 
             </div>
             <p>Recived by :<%= chat.to %></p>
             <hr>
-            <p><%= chat.created_at.toString().split(" ") %></p>
+            <p><%= new Date(chat.created_at).toString().split()%></p>
         </div>
     <% } %>
          
